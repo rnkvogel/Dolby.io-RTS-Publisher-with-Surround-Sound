@@ -1,5 +1,6 @@
 Dolby.io Real Time Streaming MultiOpus Audio Video Publisher for Surround Sound.
-Includes Media Setting Options to control viideo.
+Includes Media Setting Options to control and improve your video in real time.
+Connect multiple mics or your DAW to create immersive audio and visual experiences. 
 
 
 [DEMO THIS](https://rnkvogel.github.io/Dolby.io-RTS-Publisher-with-Surround-Sound/)
@@ -7,15 +8,29 @@ Includes Media Setting Options to control viideo.
 Audio Bus includes Dolby.io/Millicast streams with MultiOpus (5.1 / 7.1) support.
 Additional Audio options includes audio enhancements.
 
-
 Features
 🎧 MultiOpus audio playback (5.1 / 7.1)
 📊 Real-time audio visualizer per track
+<img width="1518" height="453" alt="Screenshot 2026-04-06 at 10 13 37 AM" src="https://github.com/user-attachments/assets/e8c40a52-f5ae-4ac8-9add-f2ff33057387" />
 
+Media Settings
 
+<img width="278" height="414" alt="Screenshot 2026-04-06 at 10 15 24 AM" src="https://github.com/user-attachments/assets/ebdf4554-a308-431e-bd79-2397c9189720" />
 
-📡 Direct Millicast Viewer connection (no custom signaling needed)
-🧪 Designed for validation using chrome://webrtc-internals
+Publishing Stats
+
+<img width="300" height="284" alt="Screenshot 2026-04-06 at 10 17 08 AM" src="https://github.com/user-attachments/assets/ef4587cf-aabd-4116-9d9b-84e17e647f15" />
+
+This publisher includes many of the Advanced Publishing Feature Set but more suited for the audio enthuasiast. 
+
+<img width="47" height="52" alt="Screenshot 2026-04-06 at 10 25 21 AM" src="https://github.com/user-attachments/assets/63674149-219a-4fd0-9399-df65a7ac5dda" />
+
+Share Icon for Direct Millicast Viewer connection 
+
+Select the Cog on the viewer to validate MultiOpus.
+
+<img width="498" height="31" alt="Screenshot 2026-04-06 at 10 29 16 AM" src="https://github.com/user-attachments/assets/4954676f-77b2-4560-be3e-0d42d7252c49" />
+
 Prerequisites
 Account & Stream Setup
 A valid Dolby.io (Millicast) Account ID
@@ -24,38 +39,6 @@ A valid Stream Name
 Combined format:
 
 streamAccountId/streamName
-Browser Requirements
-Chromium-based browser (Chrome recommended)
-Version 89+
-WebRTC enabled (default)
-Required Permissions
-Audio playback (no mic required)
-Autoplay must be allowed (user interaction required)
-Usage
-1. Open the Viewer
-viewer.html?streamId=YOUR_ACCOUNT/YOUR_STREAM
-
-Example:
-
-viewer.html?streamId=LZsuF8/metadata
-2. Click Start
-Connects to Dolby.io via the Millicast SDK
-Subscribes to the stream
-Automatically renders audio tracks
-3. What You Will See
-Audio Outputs Panel
-One <audio> player per incoming track
-Each includes:
-Track ID
-Ready state
-Mute status
-Visualizer
-Real-time frequency bars
-Driven by WebAudio AnalyserNode
-Independent per track
-4. Debug Panel
-
-Includes:
 
 Track events
 Connection state changes
@@ -76,42 +59,8 @@ If you see:
 codec: opus
 stereo=1
 
-➡️ Browser is downmixing → MultiOpus not active
+Chrome may downmix audio. 
 
-Architecture
-Millicast Stream
-      ↓
-millicast.View()
-      ↓
-WebRTC Track Event
-      ↓
-MediaStream → <audio>
-      ↓
-WebAudio → AnalyserNode → Canvas Visualizer
-Known Limitations
-Browser Playback
-Chrome may:
-Decode MultiOpus
-But still downmix to stereo
-Visualizer reflects signal energy, not channel separation
-Channel Routing
-This viewer does NOT:
-Split channels
-Route to speakers
-
-➡️ Next step is WebAudio channel splitting (can be added)
-
-Troubleshooting
-❌ No audio
-Click Start (required for autoplay)
-Check console for track events
-Verify stream is live
-❌ No MultiOpus detected
-Confirm publisher SDP munging
-
-Verify:
-
-a=rtpmap:111 multiopus/48000/6
 
 
 
